@@ -3,25 +3,25 @@
 This framework is part of the [Pip.Services](https://github.com/pip-services/pip-services) project.
 It defines standard component definitions that can be used to build applications and services:
 
-- [**Auth**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/auth.html) - authentication credential stores
-- [**Build**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/build.html) - factories
-- [**Cache**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/cache.html) - distributed cache
-- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - the root package
-- [**Config**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/config.html) - configuration readers
-- [**Connect**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/connect.html) - connection discovery services
-- [**Count**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/count.html) - performance counters
-- [**Info**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/info.html) - context info
-- [**Lock**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/lock.html) - distributed locks
-- [**Log**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/log.html) - logging components
-- [**Test**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/test.html) - test components
+- [**Auth**]() - authentication credential stores
+- [**Build**]() - factories
+- [**Cache**]() - distributed cache
+- [**Component**]() - the root package
+- [**Config**]() - configuration readers
+- [**Connect**]() - connection discovery services
+- [**Count**]() - performance counters
+- [**Info**]() - context info
+- [**Lock**]() - distributed locks
+- [**Log**]() - logging components
+- [**Test**]() - test components
 
 
-- [**Component**](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/modules/component.html) - root package
+- [**Component**]() - root package
 
 Quick Links:
 
 * [Downloads](https://github.com/pip-services-node/pip-services-components-node/blob/master/doc/Downloads.md)
-* [API Reference](https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/globals.html)
+* [API Reference]()
 * [Building and Testing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md)
 * [Contributing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md/#contrib)
 
