@@ -199,7 +199,7 @@ export class ConnectionParams extends ConfigParams {
 
         if (connections.length() > 0) {
             let connectionSections: string[] = connections.getSectionNames();
-            for (let index: 0; index < connectionSections.length; index++) {
+            for (let index = 0; index < connectionSections.length; index++) {
                 let connection: ConfigParams = connections.getSection(connectionSections[index]);
                 result.push(new ConnectionParams(connection));
             }

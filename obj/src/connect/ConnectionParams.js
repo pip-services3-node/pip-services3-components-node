@@ -184,7 +184,7 @@ class ConnectionParams extends pip_services3_commons_node_1.ConfigParams {
         let connections = config.getSection("connections");
         if (connections.length() > 0) {
             let connectionSections = connections.getSectionNames();
-            for (let index; index < connectionSections.length; index++) {
+            for (let index = 0; index < connectionSections.length; index++) {
                 let connection = connections.getSection(connectionSections[index]);
                 result.push(new ConnectionParams(connection));
             }
