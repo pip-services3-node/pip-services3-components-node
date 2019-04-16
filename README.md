@@ -20,10 +20,10 @@ It defines standard component definitions that can be used to build applications
 
 Quick Links:
 
-* [Downloads](https://github.com/pip-services-node/pip-services-components-node/blob/master/doc/Downloads.md)
+* [Downloads](https://github.com/pip-services3-node/pip-services3-components-node/blob/master/docs/Downloads.md)
 * [API Reference](https://pip-services3-node.github.io/pip-services3-components-node/globals.html)
-* [Building and Testing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md)
-* [Contributing](https://github.com/pip-services/pip-services-components-node/blob/master/doc/Development.md/#contrib)
+* [Building and Testing](https://github.com/pip-services3-node/pip-services3-components-node/blob/master/docs/Development.md)
+* [Contributing](https://github.com/pip-services3-node/pip-services3-components-node/blob/master/docs/Development.md#contrib)
 
 ## Acknowledgements
 
