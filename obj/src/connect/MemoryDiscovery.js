@@ -89,7 +89,7 @@ class MemoryDiscovery {
         item.connection = connection;
         this._items.push(item);
         if (callback)
-            callback(null, null);
+            callback(null, connection);
     }
     /**
      * Resolves a single connection parameters by its key.

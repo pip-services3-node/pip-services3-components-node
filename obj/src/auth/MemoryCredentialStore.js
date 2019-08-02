@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /** @module auth */
 /** @hidden */
 let async = require('async');
-const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const CredentialParams_1 = require("./CredentialParams");
 /**
  * Credential store that keeps credentials in memory.
@@ -42,7 +41,7 @@ class MemoryCredentialStore {
      * @param config    (optional) configuration with credential parameters.
      */
     constructor(config = null) {
-        this._items = new pip_services3_commons_node_1.StringValueMap();
+        this._items = {};
         if (config != null)
             this.configure(config);
     }
@@ -61,12 +60,12 @@ class MemoryCredentialStore {
      * @param config   configuration parameters to be read
      */
     readCredentials(config) {
-        this._items.clear();
+        this._items = {};
         let keys = config.getKeys();
         for (let index = 0; index < keys.length; index++) {
             let key = keys[index];
-            let value = config.getAsNullableString(key);
-            this._items.put(key, CredentialParams_1.CredentialParams.fromTuplesArray([key, value]));
+            let value = config.getAsString(key);
+            this._items[key] = CredentialParams_1.CredentialParams.fromString(value);
         }
     }
     /**
@@ -79,9 +78,9 @@ class MemoryCredentialStore {
      */
     store(correlationId, key, credential, callback) {
         if (credential != null)
-            this._items.put(key, credential);
+            this._items[key] = credential;
         else
-            this._items.remove(key);
+            delete this._items[key];
         if (callback)
             callback(null);
     }
@@ -93,7 +92,7 @@ class MemoryCredentialStore {
      * @param callback          callback function that receives found credential parameters or error.
      */
     lookup(correlationId, key, callback) {
-        let credential = this._items.getAsObject(key);
+        let credential = this._items[key];
         callback(null, credential);
     }
 }

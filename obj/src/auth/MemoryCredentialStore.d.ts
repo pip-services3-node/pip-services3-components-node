@@ -33,7 +33,7 @@ import { ICredentialStore } from './ICredentialStore';
  *     });
  */
 export declare class MemoryCredentialStore implements ICredentialStore, IReconfigurable {
-    private readonly _items;
+    private _items;
     /**
      * Creates a new instance of the credential store.
      *

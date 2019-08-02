@@ -94,12 +94,13 @@ export class MemoryDiscovery implements IDiscovery, IReconfigurable {
      * @param credential        a connection to be registered.
      * @param callback 			callback function that receives a registered connection or error.
      */
-    public register(correlationId: string, key: string, connection: ConnectionParams, callback: (err: any, result: any) => void): void {
+    public register(correlationId: string, key: string, connection: ConnectionParams,
+        callback: (err: any, result: ConnectionParams) => void): void {
         let item: DiscoveryItem = new DiscoveryItem();
         item.key = key;
         item.connection = connection;
         this._items.push(item);
-        if (callback) callback(null, null);
+        if (callback) callback(null, connection);
     }
 
     /**

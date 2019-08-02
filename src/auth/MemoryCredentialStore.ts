@@ -40,7 +40,7 @@ import { ICredentialStore } from './ICredentialStore';
  *     });
  */
 export class MemoryCredentialStore implements ICredentialStore, IReconfigurable {
-    private readonly _items: StringValueMap = new StringValueMap();
+    private _items: any = {};
 
     /**
      * Creates a new instance of the credential store.
@@ -68,12 +68,12 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      * @param config   configuration parameters to be read
      */
     public readCredentials(config: ConfigParams) {
-        this._items.clear();
+        this._items = {};
         let keys = config.getKeys();
         for (let index = 0; index < keys.length; index++) {
             let key = keys[index];
-            let value = config.getAsNullableString(key);
-            this._items.put(key, CredentialParams.fromTuplesArray([key, value]));
+            let value = config.getAsString(key);
+            this._items[key] = CredentialParams.fromString(value);
         }
     }
 
@@ -88,9 +88,9 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
     public store(correlationId: string, key: string, credential: CredentialParams,
         callback: (err: any) => void): void {
         if (credential != null)
-            this._items.put(key, credential);
+            this._items[key] = credential;
         else
-            this._items.remove(key);
+            delete this._items[key];
 
         if (callback) callback(null);
     }
@@ -104,7 +104,7 @@ export class MemoryCredentialStore implements ICredentialStore, IReconfigurable 
      */
     public lookup(correlationId: string, key: string,
         callback: (err: any, result: CredentialParams) => void): void {
-        let credential: any = this._items.getAsObject(key);
-        callback(null, <CredentialParams>credential);
+        let credential = this._items[key];
+        callback(null, credential);
     }
 }

@@ -18,7 +18,7 @@ export interface IDiscovery {
      * @param callback 			callback function that receives a registered connection or error.
      */
     register(correlationId: string, key: string, connection: ConnectionParams,
-        callback: (err: any, result: any) => void): void;
+        callback: (err: any, result: ConnectionParams) => void): void;
 
     /**
      * Resolves a single connection parameters by its key.
@@ -27,7 +27,8 @@ export interface IDiscovery {
      * @param key               a key to uniquely identify the connection.
      * @param callback          callback function that receives found connection or error.
      */
-    resolveOne(correlationId: string, key: string, callback: (err: any, result: ConnectionParams) => void): void;
+    resolveOne(correlationId: string, key: string,
+        callback: (err: any, result: ConnectionParams) => void): void;
 
     /**
      * Resolves all connection parameters by their key.
