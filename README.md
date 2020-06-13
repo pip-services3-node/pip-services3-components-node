@@ -6,7 +6,6 @@ It defines standard component definitions that can be used to build applications
 - [**Auth**](https://pip-services3-node.github.io/pip-services3-components-node/modules/auth.html) - authentication credential stores
 - [**Build**](https://pip-services3-node.github.io/pip-services3-components-node/modules/build.html) - factories
 - [**Cache**](https://pip-services3-node.github.io/pip-services3-components-node/modules/cache.html) - distributed cache
-- [**Component**](https://pip-services3-node.github.io/pip-services3-components-node/modules/component.html) - the root package
 - [**Config**](https://pip-services3-node.github.io/pip-services3-components-node/modules/config.html) - configuration readers
 - [**Connect**](https://pip-services3-node.github.io/pip-services3-components-node/modules/connect.html) - connection discovery services
 - [**Count**](https://pip-services3-node.github.io/pip-services3-components-node/modules/count.html) - performance counters
@@ -16,7 +15,7 @@ It defines standard component definitions that can be used to build applications
 - [**Test**](https://pip-services3-node.github.io/pip-services3-components-node/modules/test.html) - test components
 
 
-- [**Component**](https://pip-services3-node.github.io/pip-services3-components-node/modules/component.html) - root package
+- [**Component**](https://pip-services3-node.github.io/pip-services3-components-node/modules/component.html) - the root package
 
 Quick Links:
 
