@@ -43,8 +43,9 @@
         "docgen": "typedoc --out doc/api src --mode modules --excludeExternals --excludePrivate --target ES6 --ignoreCompilerErrors"
     },
     "dependencies": {
-        "handlebars": "^4.0.11",
-        "js-yaml": "^3.8.0",
+        "highlight.js": "9.12.0",
+        "handlebars": "4.0.12",
+        "js-yaml": "3.12.0",
         "pip-services3-commons-node": "^3.0.4"
     },
     "devDependencies": {
