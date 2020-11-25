@@ -16,7 +16,7 @@
  * connect to them). It knows the end-points, but doesn't have the credentials to connect to them. 
  * Separated for security reasons. 
  * 
- * [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] – interface for creating registries. 
+ * [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]] – interface for creating registries. 
  * 
  * [[MemoryDiscovery]] – registry that is stored in memory.  
  * 

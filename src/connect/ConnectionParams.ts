@@ -17,7 +17,7 @@ import { StringValueMap } from 'pip-services3-commons-node';
  * 
  * In addition to standard parameters ConnectionParams may contain any number of custom parameters
  * 
- * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+ * @see [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/config.configparams.html ConfigParams]]
  * @see [[CredentialParams]]
  * @see [[ConnectionResolver]]
  * @see [[IDiscovery]]
