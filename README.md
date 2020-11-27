@@ -33,6 +33,209 @@ Install the NPM package as
 npm install pip-services3-components-node --save
 ```
 
+Example how to use Logging and Performance counters.
+Here we are going to use CompositeLogger and CompositeCounters components.
+They will pass through calls to loggers and counters that are set in references.
+
+```typescript
+import { ConfigParams } from 'pip-services3-commons-node'; 
+import { IConfigurable } from 'pip-services3-commons-node'; 
+import { IReferences } from 'pip-services3-commons-node'; 
+import { IReferenceable } from 'pip-services3-commons-node'; 
+import { CompositeLogger } from 'pip-services3-components-node'; 
+import { CompositeCounters } from 'pip-services3-components-node'; 
+
+export class MyComponent implements IConfigurable, IReferenceable {
+  private _logger: CompositeLogger = new CompositeLogger();
+  private _counters: CompositeCounters = new CompositeCounters();
+  
+  public configure(config: ConfigParams): void {
+    this._logger.configure(config);
+  }
+  
+  public setReferences(refs: IReferences): void {
+    this._logger.setReferences(refs);
+    this._counters.setReferences(refs);
+  }
+  
+  public myMethod(correlationId: string, param1: any, callback: (err: any, result: any) => void): void {
+    this._logger.trace(correlationId, "Executed method mycomponent.mymethod");
+    this._counters.increment("mycomponent.mymethod.exec_count");
+    let timing = this._counters.beginTiming("mycomponent.mymethod.exec_time");
+    ....
+    timing.endTiming();
+    if (err) {
+      this._logger.error(correlationId, err, "Failed to execute mycomponent.mymethod");
+      this._counters.increment("mycomponent.mymethod.error_count");
+    }
+    ...
+  }
+}
+```
+
+Example how to get connection parameters and credentials using resolvers.
+The resolvers support "discovery_key" and "store_key" configuration parameters
+to retrieve configuration from discovery services and credential stores respectively.
+
+```typescript
+import { ConfigParams } from 'pip-services3-commons-node'; 
+import { IConfigurable } from 'pip-services3-commons-node'; 
+import { IReferences } from 'pip-services3-commons-node'; 
+import { IReferenceable } from 'pip-services3-commons-node'; 
+import { IOpenable } from 'pip-services3-commons-node'; 
+import { ConnectionParams } from 'pip-services3-components-node'; 
+import { ConnectionResolver } from 'pip-services3-components-node'; 
+import { CredentialParams } from 'pip-services3-components-node'; 
+import { CredentialResolver } from 'pip-services3-components-node'; 
+
+export class MyComponent implements IConfigurable, IReferenceable, IOpenable {
+  private _connectionResolver: ConnectionResolver = new ConnectionResolver();
+  private _credentialResolver: CredentialResolver = new CredentialResolver();
+  
+  public configure(config: ConfigParams): void {
+    this._connectionResolver.configure(config);
+    this._credentialResolver.configure(config);
+  }
+  
+  public setReferences(refs: IReferences): void {
+    this._connectionResolver.setReferences(refs);
+    this._credentialResolver.setReferences(refs);
+  }
+  
+  ...
+  
+  public open(correlationId: string, callback: (err: any) => void): void {
+    this._connectionParams.resolve(correlationId, (err, connection) => {
+      if (err) {
+        if (callback) callback(err);
+        return;
+      }
+      
+      this._credentialParams.lookup(correlationId, (err, credential) => {
+        if (err) {
+          if (callback) callback(err);
+          return;
+        }
+        
+        let host = connection.getHost();
+        let port = connection.getPort();
+        let user = credential.getUsername();
+        let pass = credential.getPassword();
+        
+        ...
+      }
+    }
+  }
+}
+
+// Using the component
+let myComponent = new MyComponent();
+
+myComponent.configure(ConfigParams.fromTuples(
+  'connection.host', 'localhost',
+  'connection.port', 1234,
+  'credential.username', 'anonymous',
+  'credential.password', 'pass123'
+));
+
+myComponent.open(null, (err) => {
+...
+});
+```
+
+Example how to use caching and locking.
+Here we assume that references are passed externally.
+
+```typescript
+import { Descriptor } from 'pip-services3-commons-node'; 
+import { References } from 'pip-services3-commons-node'; 
+import { IReferences } from 'pip-services3-commons-node'; 
+import { IReferenceable } from 'pip-services3-commons-node'; 
+import { ILock } from 'pip-services3-components-node'; 
+import { MemoryLock } from 'pip-services3-components-node'; 
+import { ICache } from 'pip-services3-components-node'; 
+import { MemoryCache } from 'pip-services3-components-node'; 
+
+export class MyComponent implements IReferenceable {
+  private _cache: ICache;
+  private _lock: ILock;
+  
+  public setReferences(refs: IReferences): void {
+    this._cache = refs.getOneRequired<ICache>(new Descriptor("*", "cache", "*", "*", "1.0"));
+    this._lock = refs.getOneRequired<ILock>(new Descriptor("*", "lock", "*", "*", "1.0"));
+  }
+  
+  public myMethod(correlationId: string, param1: any, callback: (err: any, result: any) => void): void {
+    // First check cache for result
+    this._cache.retrieve(correlationId, "mykey", (err, result) => {
+      if (err != null || result != null) {
+        callback(err, result);
+        return;
+      }
+      
+      // Lock..
+      this._lock.acquireLock(correlationId, "mykey", 1000, 1000, (err) => {
+        if (err) {
+          callback(err, null);
+          return;
+        }
+        
+        // Do processing
+        ...
+        
+        // Store result to cache async
+        this._cache.store(correlationId, "mykey", result, 3600000);
+
+        // Release lock async
+        this._lock.releaseLock(correlationId, "mykey");
+       
+        callback(null, result);
+      });
+      
+    }
+  }
+}
+
+// Use the component
+let myComponent = new MyComponent();
+
+myComponent.setReferences(References.fromTuples(
+  new Descriptor("pip-services", "cache", "memory", "default", "1.0"), new MemoryCache(),
+  new Descriptor("pip-services", "lock", "memory", "default", "1.0"), new MemoryLock(),
+);
+
+myComponent.myMethod(null, (err, result) => {
+...
+});
+```
+
+If you need to create components using their locators (descriptors) implement 
+component factories similar to the example below.
+
+```typescript
+import { Factory } from 'pip-services3-components-node';
+import { Descriptor } from 'pip-services3-commons-node';
+
+export class MyFactory extends Factory {
+  public static myComponentDescriptor: Descriptor = new Descriptor("myservice", "mycomponent", "default", "*", "1.0");
+  
+  public MyFactory() {
+    super();
+    
+    this.registerAsType(MyFactory.myComponentDescriptor, MyComponent);    
+  }
+}
+
+// Using the factory
+
+let myFactory = MyFactory();
+
+let myComponent1 = myFactory.create(new Descriptor("myservice", "mycomponent", "default", "myComponent1", "1.0");
+let myComponent2 = myFactory.create(new Descriptor("myservice", "mycomponent", "default", "myComponent2", "1.0");
+
+...
+```
+
 ## Develop
 
 For development you shall install the following prerequisites:
