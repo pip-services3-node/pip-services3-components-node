@@ -3,8 +3,7 @@
 /obj/test
 /data
 /docs
-/docker/Dockerfile*
-/docker/docker-compose*
+/docker
 /node_modules
 /.dockerignore
 /*.sh
