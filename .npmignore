@@ -5,6 +5,7 @@
 /docs
 /docker/Dockerfile*
 /docker/docker-compose*
+/node_modules
 /.dockerignore
 /*.sh
 /*.ps1
