@@ -23,7 +23,7 @@ const pip_services3_commons_node_2 = require("pip-services3-commons-node");
  *
  * In addition to standard parameters CredentialParams may contain any number of custom parameters
  *
- * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/config.configparams.html ConfigParams]]
+ * @see [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/config.configparams.html ConfigParams]]
  * @see [[ConnectionParams]]
  * @see [[CredentialResolver]]
  * @see [[ICredentialStore]]

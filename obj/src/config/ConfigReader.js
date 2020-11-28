@@ -36,7 +36,7 @@ class ConfigReader {
     /**
      * Parameterized configuration template given as string with dynamic parameters.
      *
-     * The method uses Handlebars template engine: [[https://handlebarsjs.com]]
+     * The method uses [[https://handlebarsjs.com Handlebars]] template engine.
      *
      * @param config        a string with configuration template to be parameterized
      * @param parameters    dynamic parameters to inject into the template

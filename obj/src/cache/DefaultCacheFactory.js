@@ -23,8 +23,8 @@ class DefaultCacheFactory extends Factory_1.Factory {
         this.registerAsType(DefaultCacheFactory.NullCacheDescriptor, NullCache_1.NullCache);
     }
 }
+exports.DefaultCacheFactory = DefaultCacheFactory;
 DefaultCacheFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "cache", "default", "1.0");
 DefaultCacheFactory.NullCacheDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "cache", "null", "*", "1.0");
 DefaultCacheFactory.MemoryCacheDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "cache", "memory", "*", "1.0");
-exports.DefaultCacheFactory = DefaultCacheFactory;
 //# sourceMappingURL=DefaultCacheFactory.js.map

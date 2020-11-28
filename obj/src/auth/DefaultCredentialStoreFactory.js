@@ -20,7 +20,7 @@ class DefaultCredentialStoreFactory extends Factory_1.Factory {
         this.registerAsType(DefaultCredentialStoreFactory.MemoryCredentialStoreDescriptor, MemoryCredentialStore_1.MemoryCredentialStore);
     }
 }
+exports.DefaultCredentialStoreFactory = DefaultCredentialStoreFactory;
 DefaultCredentialStoreFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "credential-store", "default", "1.0");
 DefaultCredentialStoreFactory.MemoryCredentialStoreDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "credential-store", "memory", "*", "1.0");
-exports.DefaultCredentialStoreFactory = DefaultCredentialStoreFactory;
 //# sourceMappingURL=DefaultCredentialStoreFactory.js.map

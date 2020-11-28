@@ -23,8 +23,8 @@ class DefaultLockFactory extends Factory_1.Factory {
         this.registerAsType(DefaultLockFactory.MemoryLockDescriptor, MemoryLock_1.MemoryLock);
     }
 }
+exports.DefaultLockFactory = DefaultLockFactory;
 DefaultLockFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "lock", "default", "1.0");
 DefaultLockFactory.NullLockDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "lock", "null", "*", "1.0");
 DefaultLockFactory.MemoryLockDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "lock", "memory", "*", "1.0");
-exports.DefaultLockFactory = DefaultLockFactory;
 //# sourceMappingURL=DefaultLockFactory.js.map

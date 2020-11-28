@@ -3,8 +3,8 @@ import { InternalException } from 'pip-services3-commons-node';
 /**
  * Error raised when factory is not able to create requested component.
  *
- * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/errors.internalexception.html InternalException]] (in the PipServices "Commons" package)
- * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/errors.applicationexception.html ApplicationException]] (in the PipServices "Commons" package)
+ * @see [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/errors.internalexception.html InternalException]] (in the PipServices "Commons" package)
+ * @see [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/errors.applicationexception.html ApplicationException]] (in the PipServices "Commons" package)
  */
 export declare class CreateException extends InternalException {
     /**

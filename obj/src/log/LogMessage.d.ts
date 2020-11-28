@@ -16,8 +16,8 @@ export declare class LogMessage {
     /**
      * The description of the captured error
      *
-     * [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/errors.errordescription.html ErrorDescription]]
-     * [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/errors.applicationexception.html ApplicationException]]
+     * [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/errors.errordescription.html ErrorDescription]]
+     * [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/errors.applicationexception.html ApplicationException]]
      */
     error: ErrorDescription;
     /** The human-readable message */

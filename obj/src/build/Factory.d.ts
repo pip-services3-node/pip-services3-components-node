@@ -21,7 +21,7 @@ import { IFactory } from './IFactory';
  *     factory.create(new Descriptor("mygroup", "mycomponent1", "default", "name1", "1.0"))
  *     factory.create(new Descriptor("mygroup", "mycomponent2", "default", "name2", "1.0"))
  *
- * @see [[https://rawgit.com/pip-services-node/pip-services3-commons-node/master/doc/api/classes/refer.descriptor.html Descriptor]]
+ * @see [[https://pip-services3-node.github.io/pip-services3-commons-node/classes/refer.descriptor.html Descriptor]]
  * @see [[IFactory]]
  */
 export declare class Factory implements IFactory {

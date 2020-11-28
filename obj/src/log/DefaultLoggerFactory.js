@@ -25,9 +25,9 @@ class DefaultLoggerFactory extends Factory_1.Factory {
         this.registerAsType(DefaultLoggerFactory.CompositeLoggerDescriptor, CompositeLogger_1.CompositeLogger);
     }
 }
+exports.DefaultLoggerFactory = DefaultLoggerFactory;
 DefaultLoggerFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "logger", "default", "1.0");
 DefaultLoggerFactory.NullLoggerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "logger", "null", "*", "1.0");
 DefaultLoggerFactory.ConsoleLoggerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "logger", "console", "*", "1.0");
 DefaultLoggerFactory.CompositeLoggerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "logger", "composite", "*", "1.0");
-exports.DefaultLoggerFactory = DefaultLoggerFactory;
 //# sourceMappingURL=DefaultLoggerFactory.js.map

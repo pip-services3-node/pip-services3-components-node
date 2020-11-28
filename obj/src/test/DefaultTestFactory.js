@@ -19,7 +19,7 @@ class DefaultTestFactory extends Factory_1.Factory {
         this.registerAsType(DefaultTestFactory.ShutdownDescriptor, Shutdown_1.Shutdown);
     }
 }
+exports.DefaultTestFactory = DefaultTestFactory;
 DefaultTestFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "test", "default", "1.0");
 DefaultTestFactory.ShutdownDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "shutdown", "*", "*", "1.0");
-exports.DefaultTestFactory = DefaultTestFactory;
 //# sourceMappingURL=DefaultTestFactory.js.map
