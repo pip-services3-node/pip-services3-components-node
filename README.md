@@ -4,7 +4,7 @@ This module is a part of the [Pip.Services](http://pipservices.org) polyglot mic
 
 The Components module contains standard component definitions that can be used to build applications and services.
 
-This module contains the following packages:
+The module contains the following packages:
 - **Auth** - authentication credential stores
 - **Build** - basic factories for constructing objects
 - **Cache** - distributed cache
