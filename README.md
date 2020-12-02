@@ -60,13 +60,13 @@ export class MyComponent implements IConfigurable, IReferenceable {
   
   public myMethod(correlationId: string, param1: any, callback: (err: any, result: any) => void): void {
     this._logger.trace(correlationId, "Executed method mycomponent.mymethod");
-    this._counters.increment("mycomponent.mymethod.exec_count");
+    this._counters.increment("mycomponent.mymethod.exec_count", 1);
     let timing = this._counters.beginTiming("mycomponent.mymethod.exec_time");
     ....
     timing.endTiming();
     if (err) {
       this._logger.error(correlationId, err, "Failed to execute mycomponent.mymethod");
-      this._counters.increment("mycomponent.mymethod.error_count");
+      this._counters.increment("mycomponent.mymethod.error_count", 1);
     }
     ...
   }
@@ -105,13 +105,13 @@ export class MyComponent implements IConfigurable, IReferenceable, IOpenable {
   ...
   
   public open(correlationId: string, callback: (err: any) => void): void {
-    this._connectionParams.resolve(correlationId, (err, connection) => {
+    this._connectionResolver.resolve(correlationId, (err, connection) => {
       if (err) {
         if (callback) callback(err);
         return;
       }
       
-      this._credentialParams.lookup(correlationId, (err, credential) => {
+      this._credentialResolver.lookup(correlationId, (err, credential) => {
         if (err) {
           if (callback) callback(err);
           return;
