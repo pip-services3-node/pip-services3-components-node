@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultCountersFactory = void 0;
 /** @module count */
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const NullCounters_1 = require("./NullCounters");

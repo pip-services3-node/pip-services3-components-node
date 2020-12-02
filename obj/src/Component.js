@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Component = void 0;
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const CompositeLogger_1 = require("./log/CompositeLogger");
 const CompositeCounters_1 = require("./count/CompositeCounters");

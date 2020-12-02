@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultDiscoveryFactory = exports.MemoryDiscovery = exports.ConnectionResolver = exports.ConnectionParams = void 0;
 /**
  * @module connect
  *
@@ -41,11 +42,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * One service can have more than one address.
  */
 var ConnectionParams_1 = require("./ConnectionParams");
-exports.ConnectionParams = ConnectionParams_1.ConnectionParams;
+Object.defineProperty(exports, "ConnectionParams", { enumerable: true, get: function () { return ConnectionParams_1.ConnectionParams; } });
 var ConnectionResolver_1 = require("./ConnectionResolver");
-exports.ConnectionResolver = ConnectionResolver_1.ConnectionResolver;
+Object.defineProperty(exports, "ConnectionResolver", { enumerable: true, get: function () { return ConnectionResolver_1.ConnectionResolver; } });
 var MemoryDiscovery_1 = require("./MemoryDiscovery");
-exports.MemoryDiscovery = MemoryDiscovery_1.MemoryDiscovery;
+Object.defineProperty(exports, "MemoryDiscovery", { enumerable: true, get: function () { return MemoryDiscovery_1.MemoryDiscovery; } });
 var DefaultDiscoveryFactory_1 = require("./DefaultDiscoveryFactory");
-exports.DefaultDiscoveryFactory = DefaultDiscoveryFactory_1.DefaultDiscoveryFactory;
+Object.defineProperty(exports, "DefaultDiscoveryFactory", { enumerable: true, get: function () { return DefaultDiscoveryFactory_1.DefaultDiscoveryFactory; } });
 //# sourceMappingURL=index.js.map

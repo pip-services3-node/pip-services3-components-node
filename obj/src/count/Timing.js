@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Timing = void 0;
 /**
  * Callback object returned by {@link ICounters.beginTiming} to end timing
  * of execution block and update the associated counter.

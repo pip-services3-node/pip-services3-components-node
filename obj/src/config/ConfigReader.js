@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConfigReader = void 0;
 /** @module config */
 /** @hidden */
 let _ = require('lodash');

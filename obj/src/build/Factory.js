@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Factory = void 0;
 const CreateException_1 = require("./CreateException");
 class Registration {
 }

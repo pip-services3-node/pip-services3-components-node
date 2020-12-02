@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.FileConfigReader = void 0;
 const ConfigReader_1 = require("./ConfigReader");
 /**
  * Abstract config reader that reads configuration from a file.

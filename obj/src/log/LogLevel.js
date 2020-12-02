@@ -1,6 +1,7 @@
 "use strict";
 /** @module log */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LogLevel = void 0;
 /**
  * Standard log levels.
  *

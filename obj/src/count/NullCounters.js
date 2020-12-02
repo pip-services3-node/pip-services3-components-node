@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NullCounters = void 0;
 /** @module count */
 const Timing_1 = require("./Timing");
 /**

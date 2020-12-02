@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CredentialResolver = void 0;
 /** @module auth */
 /** @hidden */
 let async = require('async');

@@ -51,6 +51,8 @@
         "@types/mocha": "*",
         "@types/node": "*",
         "chai": "^3.5.0",
-        "mocha": "^2.2.0"
+        "mocha": "^2.2.0",
+        "handlebars": "^4.7.6",
+        "js-yaml": "^3.14.0"
     }
 }

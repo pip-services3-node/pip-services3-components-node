@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultLockFactory = exports.MemoryLock = exports.NullLock = exports.Lock = void 0;
 var Lock_1 = require("./Lock");
-exports.Lock = Lock_1.Lock;
+Object.defineProperty(exports, "Lock", { enumerable: true, get: function () { return Lock_1.Lock; } });
 var NullLock_1 = require("./NullLock");
-exports.NullLock = NullLock_1.NullLock;
+Object.defineProperty(exports, "NullLock", { enumerable: true, get: function () { return NullLock_1.NullLock; } });
 var MemoryLock_1 = require("./MemoryLock");
-exports.MemoryLock = MemoryLock_1.MemoryLock;
+Object.defineProperty(exports, "MemoryLock", { enumerable: true, get: function () { return MemoryLock_1.MemoryLock; } });
 var DefaultLockFactory_1 = require("./DefaultLockFactory");
-exports.DefaultLockFactory = DefaultLockFactory_1.DefaultLockFactory;
+Object.defineProperty(exports, "DefaultLockFactory", { enumerable: true, get: function () { return DefaultLockFactory_1.DefaultLockFactory; } });
 //# sourceMappingURL=index.js.map

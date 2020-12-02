@@ -1,6 +1,7 @@
 "use strict";
 /** @module cache */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CacheEntry = void 0;
 /**
  * Data object to store cached values with their keys used by [[MemoryCache]]
  */

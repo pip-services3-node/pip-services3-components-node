@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.LogLevelConverter = void 0;
 /** @module log */
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const LogLevel_1 = require("./LogLevel");

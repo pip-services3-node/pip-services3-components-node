@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NullLock = void 0;
 /**
  * Dummy lock implementation that doesn't do anything.
  *

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CachedCounters = void 0;
 const Timing_1 = require("./Timing");
 const CounterType_1 = require("./CounterType");
 const Counter_1 = require("./Counter");

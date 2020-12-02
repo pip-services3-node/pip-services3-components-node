@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NullCache = void 0;
 /**
  * Dummy cache implementation that doesn't do anything.
  *

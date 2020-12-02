@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultCredentialStoreFactory = void 0;
 /** @module auth */
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const Factory_1 = require("../build/Factory");

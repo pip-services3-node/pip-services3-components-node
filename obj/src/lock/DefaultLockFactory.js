@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultLockFactory = void 0;
 /** @module lock */
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const NullLock_1 = require("./NullLock");

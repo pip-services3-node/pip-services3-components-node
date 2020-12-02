@@ -1,6 +1,7 @@
 "use strict";
 /** @module count */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CounterType = void 0;
 /**
  * Types of counters that measure different types of metrics
  */

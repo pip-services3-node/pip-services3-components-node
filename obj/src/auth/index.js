@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultCredentialStoreFactory = exports.MemoryCredentialStore = exports.CredentialResolver = exports.CredentialParams = void 0;
 /**
  * @module auth
  *
@@ -19,11 +20,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * credential parameters.
  */
 var CredentialParams_1 = require("./CredentialParams");
-exports.CredentialParams = CredentialParams_1.CredentialParams;
+Object.defineProperty(exports, "CredentialParams", { enumerable: true, get: function () { return CredentialParams_1.CredentialParams; } });
 var CredentialResolver_1 = require("./CredentialResolver");
-exports.CredentialResolver = CredentialResolver_1.CredentialResolver;
+Object.defineProperty(exports, "CredentialResolver", { enumerable: true, get: function () { return CredentialResolver_1.CredentialResolver; } });
 var MemoryCredentialStore_1 = require("./MemoryCredentialStore");
-exports.MemoryCredentialStore = MemoryCredentialStore_1.MemoryCredentialStore;
+Object.defineProperty(exports, "MemoryCredentialStore", { enumerable: true, get: function () { return MemoryCredentialStore_1.MemoryCredentialStore; } });
 var DefaultCredentialStoreFactory_1 = require("./DefaultCredentialStoreFactory");
-exports.DefaultCredentialStoreFactory = DefaultCredentialStoreFactory_1.DefaultCredentialStoreFactory;
+Object.defineProperty(exports, "DefaultCredentialStoreFactory", { enumerable: true, get: function () { return DefaultCredentialStoreFactory_1.DefaultCredentialStoreFactory; } });
 //# sourceMappingURL=index.js.map

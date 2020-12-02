@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MemoryDiscovery = void 0;
 /** @module connect */
 /** @hidden */
 let async = require('async');

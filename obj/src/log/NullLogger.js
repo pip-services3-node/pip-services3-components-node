@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NullLogger = void 0;
 const LogLevel_1 = require("./LogLevel");
 /**
  * Dummy implementation of logger that doesn't do anything.

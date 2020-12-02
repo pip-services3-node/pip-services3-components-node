@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.JsonConfigReader = void 0;
 /** @module config */
 /** @hidden */
 let fs = require('fs');

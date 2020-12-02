@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MemoryCache = void 0;
 const CacheEntry_1 = require("./CacheEntry");
 /**
  * Cache that stores values in the process memory.

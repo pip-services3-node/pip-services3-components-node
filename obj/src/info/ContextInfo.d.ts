@@ -51,63 +51,68 @@ export declare class ContextInfo implements IReconfigurable {
      *
      * @returns the context name
      */
+    get name(): string;
     /**
-    * Sets the context name.
-    *
-    * @param value		a new name for the context.
-    */
-    name: string;
+     * Sets the context name.
+     *
+     * @param value		a new name for the context.
+     */
+    set name(value: string);
     /**
      * Gets the human-readable description of the context.
      *
      * @returns the human-readable description of the context.
      */
+    get description(): string;
     /**
-    * Sets the human-readable description of the context.
-    *
-    * @param value a new human readable description of the context.
-    */
-    description: string;
+     * Sets the human-readable description of the context.
+     *
+     * @param value a new human readable description of the context.
+     */
+    set description(value: string);
     /**
      * Gets the unique context id.
      * Usually it is the current host name.
      *
      * @returns the unique context id.
      */
+    get contextId(): string;
     /**
-    * Sets the unique context id.
-    *
-    * @param value a new unique context id.
-    */
-    contextId: string;
+     * Sets the unique context id.
+     *
+     * @param value a new unique context id.
+     */
+    set contextId(value: string);
     /**
      * Gets the context start time.
      *
      * @returns the context start time.
      */
+    get startTime(): Date;
     /**
-    * Sets the context start time.
-    *
-    * @param value a new context start time.
-    */
-    startTime: Date;
+     * Sets the context start time.
+     *
+     * @param value a new context start time.
+     */
+    set startTime(value: Date);
     /**
      * Calculates the context uptime as from the start time.
      *
      * @returns number of milliseconds from the context start time.
      */
-    readonly uptime: number;
+    get uptime(): number;
     /**
      * Gets context additional parameters.
      *
      * @returns a JSON object with additional context parameters.
      */
+    get properties(): any;
     /**
      * Sets context additional parameters.
      *
      * @param properties 	a JSON object with context additional parameters
     */
-    properties: any;
+    set properties(properties: any);
     /**
      * Creates a new ContextInfo and sets its configuration parameters.
      *

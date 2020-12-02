@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DefaultInfoFactory = exports.ContextInfo = void 0;
 /**
  * @module info
  *
@@ -11,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * the processes name, what the process is/does.
  */
 var ContextInfo_1 = require("./ContextInfo");
-exports.ContextInfo = ContextInfo_1.ContextInfo;
+Object.defineProperty(exports, "ContextInfo", { enumerable: true, get: function () { return ContextInfo_1.ContextInfo; } });
 var DefaultInfoFactory_1 = require("./DefaultInfoFactory");
-exports.DefaultInfoFactory = DefaultInfoFactory_1.DefaultInfoFactory;
+Object.defineProperty(exports, "DefaultInfoFactory", { enumerable: true, get: function () { return DefaultInfoFactory_1.DefaultInfoFactory; } });
 //# sourceMappingURL=index.js.map

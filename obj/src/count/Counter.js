@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Counter = void 0;
 /**
  * Data object to store measurement for a performance counter.
  * This object is used by [[CachedCounters]] to store counters.

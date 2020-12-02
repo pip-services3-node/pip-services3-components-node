@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CachedLogger = void 0;
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
 const Logger_1 = require("./Logger");
 const LogLevelConverter_1 = require("./LogLevelConverter");

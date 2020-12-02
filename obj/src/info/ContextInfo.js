@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ContextInfo = void 0;
 /** @module info */
 /** @hidden */
 let os = require('os');
