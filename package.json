@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-components-node",
-    "version": "3.0.8",
+    "version": "3.1.0",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Component definitions for Pip.Services in Node.js",
     "contributors": [
@@ -51,8 +51,8 @@
         "@types/mocha": "*",
         "@types/node": "*",
         "chai": "^3.5.0",
-        "mocha": "^2.2.0",
         "handlebars": "^4.7.6",
-        "js-yaml": "^3.14.0"
+        "js-yaml": "^3.14.0",
+        "mocha": "^2.2.0"
     }
 }
