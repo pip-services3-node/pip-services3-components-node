@@ -22,6 +22,5 @@ class DefaultDiscoveryFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultDiscoveryFactory = DefaultDiscoveryFactory;
-DefaultDiscoveryFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "discovery", "default", "1.0");
 DefaultDiscoveryFactory.MemoryDiscoveryDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "discovery", "memory", "*", "1.0");
 //# sourceMappingURL=DefaultDiscoveryFactory.js.map

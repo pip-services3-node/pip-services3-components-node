@@ -1,5 +1,3 @@
-/** @module cache */
-import { Descriptor } from 'pip-services3-commons-node';
 import { Factory } from '../build/Factory';
 /**
  * Creates [[ICache]] components by their descriptors.
@@ -10,9 +8,8 @@ import { Factory } from '../build/Factory';
  * @see [[NullCache]]
  */
 export declare class DefaultCacheFactory extends Factory {
-    static readonly Descriptor: Descriptor;
-    static readonly NullCacheDescriptor: Descriptor;
-    static readonly MemoryCacheDescriptor: Descriptor;
+    private static readonly NullCacheDescriptor;
+    private static readonly MemoryCacheDescriptor;
     /**
      * Create a new instance of the factory.
      */

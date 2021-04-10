@@ -12,8 +12,7 @@ import { MemoryDiscovery } from './MemoryDiscovery';
  * @see [[MemoryDiscovery]]
  */
 export class DefaultDiscoveryFactory extends Factory {
-	public static readonly Descriptor = new Descriptor("pip-services", "factory", "discovery", "default", "1.0");
-	public static readonly MemoryDiscoveryDescriptor = new Descriptor("pip-services", "discovery", "memory", "*", "1.0");
+	private static readonly MemoryDiscoveryDescriptor = new Descriptor("pip-services", "discovery", "memory", "*", "1.0");
 	
 	/**
 	 * Create a new instance of the factory.

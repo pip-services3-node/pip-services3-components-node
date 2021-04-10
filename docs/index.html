@@ -65,7 +65,7 @@
 				<h1 id="-img-src-https-uploads-ssl-webflow-com-5ea5d3315186cf5ec60c3ee4-5edf1c94ce4c859f2b188094_logo-svg-alt-pip-services-logo-width-200-br-component-definitions-for-node-js"><img src="https://uploads-ssl.webflow.com/5ea5d3315186cf5ec60c3ee4/5edf1c94ce4c859f2b188094_logo.svg" alt="Pip.Services Logo" width="200"> <br/> Component definitions for Node.js</h1>
 				<p>This module is a part of the <a href="http://pipservices.org">Pip.Services</a> polyglot microservices toolkit.</p>
 				<p>The Components module contains standard component definitions that can be used to build applications and services.</p>
-				<p>This module contains the following packages:</p>
+				<p>The module contains the following packages:</p>
 				<ul>
 					<li><strong>Auth</strong> - authentication credential stores</li>
 					<li><strong>Build</strong> - basic factories for constructing objects</li>
@@ -91,6 +91,197 @@
 				<h2 id="use">Use</h2>
 				<p>Install the NPM package as</p>
 				<pre><code class="lang-bash">npm install pip-services3-components-node --save
+</code></pre>
+				<p>Example how to use Logging and Performance counters.
+					Here we are going to use CompositeLogger and CompositeCounters components.
+				They will pass through calls to loggers and counters that are set in references.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { ConfigParams } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+<span class="hljs-keyword">import</span> { IConfigurable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferences } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferenceable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { CompositeLogger } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { CompositeCounters } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyComponent <span class="hljs-keyword">implements</span> IConfigurable, IReferenceable {
+  <span class="hljs-keyword">private</span> _logger: CompositeLogger = <span class="hljs-keyword">new</span> CompositeLogger();
+  <span class="hljs-keyword">private</span> _counters: CompositeCounters = <span class="hljs-keyword">new</span> CompositeCounters();
+
+  <span class="hljs-keyword">public</span> configure(config: ConfigParams): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._logger.configure(config);
+  }
+
+  <span class="hljs-keyword">public</span> setReferences(refs: IReferences): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._logger.setReferences(refs);
+    <span class="hljs-keyword">this</span>._counters.setReferences(refs);
+  }
+
+  <span class="hljs-keyword">public</span> myMethod(correlationId: <span class="hljs-built_in">string</span>, param1: <span class="hljs-built_in">any</span>, callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, result: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._logger.trace(correlationId, <span class="hljs-string">"Executed method mycomponent.mymethod"</span>);
+    <span class="hljs-keyword">this</span>._counters.increment(<span class="hljs-string">"mycomponent.mymethod.exec_count"</span>, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">let</span> timing = <span class="hljs-keyword">this</span>._counters.beginTiming(<span class="hljs-string">"mycomponent.mymethod.exec_time"</span>);
+    ....
+    timing.endTiming();
+    <span class="hljs-keyword">if</span> (err) {
+      <span class="hljs-keyword">this</span>._logger.error(correlationId, err, <span class="hljs-string">"Failed to execute mycomponent.mymethod"</span>);
+      <span class="hljs-keyword">this</span>._counters.increment(<span class="hljs-string">"mycomponent.mymethod.error_count"</span>, <span class="hljs-number">1</span>);
+    }
+    ...
+  }
+}
+</code></pre>
+				<p>Example how to get connection parameters and credentials using resolvers.
+					The resolvers support &quot;discovery_key&quot; and &quot;store_key&quot; configuration parameters
+				to retrieve configuration from discovery services and credential stores respectively.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { ConfigParams } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+<span class="hljs-keyword">import</span> { IConfigurable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferences } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferenceable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IOpenable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { ConnectionParams } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { ConnectionResolver } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { CredentialParams } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { CredentialResolver } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyComponent <span class="hljs-keyword">implements</span> IConfigurable, IReferenceable, IOpenable {
+  <span class="hljs-keyword">private</span> _connectionResolver: ConnectionResolver = <span class="hljs-keyword">new</span> ConnectionResolver();
+  <span class="hljs-keyword">private</span> _credentialResolver: CredentialResolver = <span class="hljs-keyword">new</span> CredentialResolver();
+
+  <span class="hljs-keyword">public</span> configure(config: ConfigParams): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._connectionResolver.configure(config);
+    <span class="hljs-keyword">this</span>._credentialResolver.configure(config);
+  }
+
+  <span class="hljs-keyword">public</span> setReferences(refs: IReferences): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._connectionResolver.setReferences(refs);
+    <span class="hljs-keyword">this</span>._credentialResolver.setReferences(refs);
+  }
+
+  ...
+
+  <span class="hljs-keyword">public</span> open(correlationId: <span class="hljs-built_in">string</span>, callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._connectionResolver.resolve(correlationId, <span class="hljs-function">(<span class="hljs-params">err, connection</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (err) {
+        <span class="hljs-keyword">if</span> (callback) callback(err);
+        <span class="hljs-keyword">return</span>;
+      }
+
+      <span class="hljs-keyword">this</span>._credentialResolver.lookup(correlationId, <span class="hljs-function">(<span class="hljs-params">err, credential</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err) {
+          <span class="hljs-keyword">if</span> (callback) callback(err);
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-keyword">let</span> host = connection.getHost();
+        <span class="hljs-keyword">let</span> port = connection.getPort();
+        <span class="hljs-keyword">let</span> user = credential.getUsername();
+        <span class="hljs-keyword">let</span> pass = credential.getPassword();
+
+        ...
+      }
+    }
+  }
+}
+
+<span class="hljs-comment">// Using the component</span>
+<span class="hljs-keyword">let</span> myComponent = <span class="hljs-keyword">new</span> MyComponent();
+
+myComponent.configure(ConfigParams.fromTuples(
+  <span class="hljs-string">'connection.host'</span>, <span class="hljs-string">'localhost'</span>,
+  <span class="hljs-string">'connection.port'</span>, <span class="hljs-number">1234</span>,
+  <span class="hljs-string">'credential.username'</span>, <span class="hljs-string">'anonymous'</span>,
+  <span class="hljs-string">'credential.password'</span>, <span class="hljs-string">'pass123'</span>
+));
+
+myComponent.open(<span class="hljs-literal">null</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+...
+});
+</code></pre>
+				<p>Example how to use caching and locking.
+				Here we assume that references are passed externally.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Descriptor } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+<span class="hljs-keyword">import</span> { References } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferences } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { IReferenceable } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>; 
+<span class="hljs-keyword">import</span> { ILock } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { MemoryLock } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { ICache } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+<span class="hljs-keyword">import</span> { MemoryCache } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>; 
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyComponent <span class="hljs-keyword">implements</span> IReferenceable {
+  <span class="hljs-keyword">private</span> _cache: ICache;
+  <span class="hljs-keyword">private</span> _lock: ILock;
+
+  <span class="hljs-keyword">public</span> setReferences(refs: IReferences): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>._cache = refs.getOneRequired&lt;ICache&gt;(<span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"*"</span>, <span class="hljs-string">"cache"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"1.0"</span>));
+    <span class="hljs-keyword">this</span>._lock = refs.getOneRequired&lt;ILock&gt;(<span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"*"</span>, <span class="hljs-string">"lock"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"1.0"</span>));
+  }
+
+  <span class="hljs-keyword">public</span> myMethod(correlationId: <span class="hljs-built_in">string</span>, param1: <span class="hljs-built_in">any</span>, callback: <span class="hljs-function">(<span class="hljs-params">err: <span class="hljs-built_in">any</span>, result: <span class="hljs-built_in">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>): <span class="hljs-built_in">void</span> {
+    <span class="hljs-comment">// First check cache for result</span>
+    <span class="hljs-keyword">this</span>._cache.retrieve(correlationId, <span class="hljs-string">"mykey"</span>, <span class="hljs-function">(<span class="hljs-params">err, result</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (err != <span class="hljs-literal">null</span> || result != <span class="hljs-literal">null</span>) {
+        callback(err, result);
+        <span class="hljs-keyword">return</span>;
+      }
+
+      <span class="hljs-comment">// Lock..</span>
+      <span class="hljs-keyword">this</span>._lock.acquireLock(correlationId, <span class="hljs-string">"mykey"</span>, <span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (err) {
+          callback(err, <span class="hljs-literal">null</span>);
+          <span class="hljs-keyword">return</span>;
+        }
+
+        <span class="hljs-comment">// Do processing</span>
+        ...
+
+        <span class="hljs-comment">// Store result to cache async</span>
+        <span class="hljs-keyword">this</span>._cache.store(correlationId, <span class="hljs-string">"mykey"</span>, result, <span class="hljs-number">3600000</span>);
+
+        <span class="hljs-comment">// Release lock async</span>
+        <span class="hljs-keyword">this</span>._lock.releaseLock(correlationId, <span class="hljs-string">"mykey"</span>);
+
+        callback(<span class="hljs-literal">null</span>, result);
+      });
+
+    }
+  }
+}
+
+<span class="hljs-comment">// Use the component</span>
+<span class="hljs-keyword">let</span> myComponent = <span class="hljs-keyword">new</span> MyComponent();
+
+myComponent.setReferences(References.fromTuples(
+  <span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"pip-services"</span>, <span class="hljs-string">"cache"</span>, <span class="hljs-string">"memory"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"1.0"</span>), <span class="hljs-keyword">new</span> MemoryCache(),
+  <span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"pip-services"</span>, <span class="hljs-string">"lock"</span>, <span class="hljs-string">"memory"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"1.0"</span>), <span class="hljs-keyword">new</span> MemoryLock(),
+);
+
+myComponent.myMethod(<span class="hljs-literal">null</span>, <span class="hljs-function">(<span class="hljs-params">err, result</span>) =&gt;</span> {
+...
+});
+</code></pre>
+				<p>If you need to create components using their locators (descriptors) implement
+				component factories similar to the example below.</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> { Factory } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-components-node'</span>;
+<span class="hljs-keyword">import</span> { Descriptor } <span class="hljs-keyword">from</span> <span class="hljs-string">'pip-services3-commons-node'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyFactory <span class="hljs-keyword">extends</span> Factory {
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> myComponentDescriptor: Descriptor = <span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"myservice"</span>, <span class="hljs-string">"mycomponent"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"*"</span>, <span class="hljs-string">"1.0"</span>);
+
+  <span class="hljs-keyword">public</span> MyFactory() {
+    <span class="hljs-keyword">super</span>();
+
+    <span class="hljs-keyword">this</span>.registerAsType(MyFactory.myComponentDescriptor, MyComponent);    
+  }
+}
+
+<span class="hljs-comment">// Using the factory</span>
+
+<span class="hljs-keyword">let</span> myFactory = MyFactory();
+
+<span class="hljs-keyword">let</span> myComponent1 = myFactory.create(<span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"myservice"</span>, <span class="hljs-string">"mycomponent"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"myComponent1"</span>, <span class="hljs-string">"1.0"</span>);
+<span class="hljs-keyword">let</span> myComponent2 = myFactory.create(<span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"myservice"</span>, <span class="hljs-string">"mycomponent"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"myComponent2"</span>, <span class="hljs-string">"1.0"</span>);
+
+...
 </code></pre>
 				<h2 id="develop">Develop</h2>
 				<p>For development you shall install the following prerequisites:</p>
@@ -163,6 +354,9 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/test.html">test</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/trace.html">trace</a>
 					</li>
 				</ul>
 			</nav>

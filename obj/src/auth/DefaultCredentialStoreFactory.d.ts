@@ -1,5 +1,3 @@
-/** @module auth */
-import { Descriptor } from 'pip-services3-commons-node';
 import { Factory } from '../build/Factory';
 /**
  * Creates [[ICredentialStore]] components by their descriptors.
@@ -9,8 +7,7 @@ import { Factory } from '../build/Factory';
  * @see [[MemoryCredentialStore]]
  */
 export declare class DefaultCredentialStoreFactory extends Factory {
-    static readonly Descriptor: Descriptor;
-    static readonly MemoryCredentialStoreDescriptor: Descriptor;
+    private static readonly MemoryCredentialStoreDescriptor;
     /**
      * Create a new instance of the factory.
      */

@@ -22,6 +22,5 @@ class DefaultCredentialStoreFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultCredentialStoreFactory = DefaultCredentialStoreFactory;
-DefaultCredentialStoreFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "credential-store", "default", "1.0");
 DefaultCredentialStoreFactory.MemoryCredentialStoreDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "credential-store", "memory", "*", "1.0");
 //# sourceMappingURL=DefaultCredentialStoreFactory.js.map

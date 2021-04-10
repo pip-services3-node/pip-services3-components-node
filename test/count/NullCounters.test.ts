@@ -1,7 +1,7 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 
 import { NullCounters } from '../../src/count/NullCounters';
-import { Timing } from '../../src/count/Timing';
+import { CounterTiming } from '../../src/count/CounterTiming';
 
 suite('NullCounters', ()=> {
 
@@ -16,7 +16,7 @@ suite('NullCounters', ()=> {
     test('Measure Elapsed Time', () => {
         let  counters: NullCounters = new NullCounters();
 
-        let timer: Timing = counters.beginTiming("Test.Elapsed");
+        let timer: CounterTiming = counters.beginTiming("Test.Elapsed");
         timer.endTiming();
     });    
 

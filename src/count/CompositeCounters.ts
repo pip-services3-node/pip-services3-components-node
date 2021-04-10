@@ -4,8 +4,8 @@ import { IReferences } from 'pip-services3-commons-node';
 import { Descriptor } from 'pip-services3-commons-node';
 
 import { ICounters } from './ICounters';
-import { Timing } from './Timing';
-import { ITimingCallback } from './ITimingCallback';
+import { CounterTiming } from './CounterTiming';
+import { ICounterTimingCallback } from './ICounterTimingCallback';
 
 /**
  * Aggregates all counters from component references under a single component.
@@ -40,7 +40,7 @@ import { ITimingCallback } from './ITimingCallback';
  *     }
  * 
  */
-export class CompositeCounters implements ICounters, ITimingCallback, IReferenceable {
+export class CompositeCounters implements ICounters, ICounterTimingCallback, IReferenceable {
     protected readonly _counters: ICounters[] = [];
 
     /**
@@ -48,7 +48,7 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
      * 
 	 * @param references 	references to locate the component dependencies. 
      */
-    public CompositeCounters(references: IReferences = null) {
+    public constructor(references: IReferences = null) {
         if (references != null)
             this.setReferences(references);
     }
@@ -59,7 +59,7 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
 	 * @param references 	references to locate the component dependencies. 
      */
     public setReferences(references: IReferences): void {
-        var counters = references.getOptional<ICounters>(new Descriptor(null, "counters", null, null, null));
+        let counters = references.getOptional<ICounters>(new Descriptor(null, "counters", null, null, null));
         for (let i = 0; i < counters.length; i++) {
             let counter: ICounters = counters[i];
 
@@ -70,14 +70,14 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
 
     /**
 	 * Begins measurement of execution time interval.
-	 * It returns [[Timing]] object which has to be called at
-	 * [[Timing.endTiming]] to end the measurement and update the counter.
+	 * It returns [[CounterTiming]] object which has to be called at
+	 * [[CounterTiming.endTiming]] to end the measurement and update the counter.
 	 * 
 	 * @param name 	a counter name of Interval type.
-	 * @returns a [[Timing]] callback object to end timing.
+	 * @returns a [[CounterTiming]] callback object to end timing.
      */
-    public beginTiming(name: string): Timing {
-        return new Timing(name, this);
+    public beginTiming(name: string): CounterTiming {
+        return new CounterTiming(name, this);
     }
 
     /**
@@ -86,12 +86,12 @@ export class CompositeCounters implements ICounters, ITimingCallback, IReference
      * @param name      a counter name
      * @param elapsed   execution elapsed time in milliseconds to update the counter.
      * 
-     * @see [[Timing.endTiming]]
+     * @see [[CounterTiming.endTiming]]
      */
     public endTiming(name: string, elapsed: number): void {
         for (let i = 0; i < this._counters.length; i++) {
             let counter: any = this._counters[i];
-            var callback = counter as ITimingCallback;
+            let callback = counter as ICounterTimingCallback;
             if (callback != null)
                 callback.endTiming(name, elapsed);
         }

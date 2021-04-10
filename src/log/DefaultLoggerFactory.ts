@@ -15,10 +15,9 @@ import { Factory } from '../build/Factory';
  * @see [[CompositeLogger]]
  */
 export class DefaultLoggerFactory extends Factory {
-	public static readonly Descriptor = new Descriptor("pip-services", "factory", "logger", "default", "1.0");
-	public static readonly NullLoggerDescriptor = new Descriptor("pip-services", "logger", "null", "*", "1.0");
-	public static readonly ConsoleLoggerDescriptor = new Descriptor("pip-services", "logger", "console", "*", "1.0");
-	public static readonly CompositeLoggerDescriptor = new Descriptor("pip-services", "logger", "composite", "*", "1.0");
+	private static readonly NullLoggerDescriptor = new Descriptor("pip-services", "logger", "null", "*", "1.0");
+	private static readonly ConsoleLoggerDescriptor = new Descriptor("pip-services", "logger", "console", "*", "1.0");
+	private static readonly CompositeLoggerDescriptor = new Descriptor("pip-services", "logger", "composite", "*", "1.0");
 
 	/**
 	 * Create a new instance of the factory.

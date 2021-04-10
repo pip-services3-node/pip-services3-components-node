@@ -1,5 +1,5 @@
 let async = require('async');
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 
 import { ILock } from '../../src/lock/ILock';
 

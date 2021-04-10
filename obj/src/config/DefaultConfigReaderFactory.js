@@ -27,7 +27,6 @@ class DefaultConfigReaderFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultConfigReaderFactory = DefaultConfigReaderFactory;
-DefaultConfigReaderFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "config-reader", "default", "1.0");
 DefaultConfigReaderFactory.MemoryConfigReaderDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "config-reader", "memory", "*", "1.0");
 DefaultConfigReaderFactory.JsonConfigReaderDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "config-reader", "json", "*", "1.0");
 DefaultConfigReaderFactory.YamlConfigReaderDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "config-reader", "yaml", "*", "1.0");

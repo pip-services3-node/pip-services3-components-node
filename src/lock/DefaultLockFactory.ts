@@ -14,9 +14,8 @@ import { Factory } from '../build/Factory';
  * @see [[NullLock]]
  */
 export class DefaultLockFactory extends Factory {
-	public static readonly Descriptor = new Descriptor("pip-services", "factory", "lock", "default", "1.0");
-	public static readonly NullLockDescriptor = new Descriptor("pip-services", "lock", "null", "*", "1.0");
-	public static readonly MemoryLockDescriptor = new Descriptor("pip-services", "lock", "memory", "*", "1.0");
+	private static readonly NullLockDescriptor = new Descriptor("pip-services", "lock", "null", "*", "1.0");
+	private static readonly MemoryLockDescriptor = new Descriptor("pip-services", "lock", "memory", "*", "1.0");
 
 	/**
 	 * Create a new instance of the factory.

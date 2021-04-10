@@ -1,4 +1,4 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 let async = require('async');
 
 import { ConfigParams } from 'pip-services3-commons-node';

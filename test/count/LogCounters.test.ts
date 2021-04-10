@@ -1,20 +1,20 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 
+import { Descriptor } from 'pip-services3-commons-node';
 import { References } from 'pip-services3-commons-node';
 
 import { LogCounters } from '../../src/count/LogCounters';
 import { CounterType } from '../../src/count/CounterType';
-import { DefaultLoggerFactory } from '../../src/log/DefaultLoggerFactory';
 import { NullLogger } from '../../src/log/NullLogger';
-import { Timing } from '../../src/count/Timing';
+import { CounterTiming } from '../../src/count/CounterTiming';
 
 suite('LogCounters', ()=> {
-    var _counters: LogCounters;
+    let _counters: LogCounters;
 
     beforeEach(function() {
         let log: NullLogger = new NullLogger();
         let refs: References = References.fromTuples(
-            DefaultLoggerFactory.NullLoggerDescriptor, log
+            new Descriptor("pip-services", "logger", "null", "default", "1.0"), log
         );
         _counters = new LogCounters();
         _counters.setReferences(refs);
@@ -26,7 +26,7 @@ suite('LogCounters', ()=> {
         counters.last("Test.LastValue", 123);
         counters.last("Test.LastValue", 123456);
 
-        var counter = counters.get("Test.LastValue", CounterType.LastValue);
+        let counter = counters.get("Test.LastValue", CounterType.LastValue);
         assert.isNotNull(counter);
         assert.isNotNull(counter.last);
         assert.equal(counter.last, 123456, 3);
@@ -57,12 +57,12 @@ suite('LogCounters', ()=> {
     });    
 
     test('Measure Elapsed Time', (done) => {
-        let timer: Timing = _counters.beginTiming("Test.Elapsed");
+        let timer: CounterTiming = _counters.beginTiming("Test.Elapsed");
 
         setTimeout(function() {
             timer.endTiming();
 
-            var counter = _counters.get("Test.Elapsed", CounterType.Interval);
+            let counter = _counters.get("Test.Elapsed", CounterType.Interval);
             console.log(counter.last);
             assert.isTrue(counter.last > 50);
             assert.isTrue(counter.last < 5000);

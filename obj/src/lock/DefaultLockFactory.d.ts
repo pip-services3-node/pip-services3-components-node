@@ -1,5 +1,3 @@
-/** @module lock */
-import { Descriptor } from 'pip-services3-commons-node';
 import { Factory } from '../build/Factory';
 /**
  * Creates [[ILock]] components by their descriptors.
@@ -10,9 +8,8 @@ import { Factory } from '../build/Factory';
  * @see [[NullLock]]
  */
 export declare class DefaultLockFactory extends Factory {
-    static readonly Descriptor: Descriptor;
-    static readonly NullLockDescriptor: Descriptor;
-    static readonly MemoryLockDescriptor: Descriptor;
+    private static readonly NullLockDescriptor;
+    private static readonly MemoryLockDescriptor;
     /**
      * Create a new instance of the factory.
      */

@@ -1,11 +1,10 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 
 import { ConsoleLogger } from '../../src/log/ConsoleLogger';
 import { LogLevel } from '../../src/log/LogLevel';
 
 suite('ConsoleLogger', ()=> {
-    
-    var _logger: ConsoleLogger;
+    let _logger: ConsoleLogger;
 
     beforeEach(function() {
         _logger = new ConsoleLogger();

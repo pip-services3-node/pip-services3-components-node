@@ -11,8 +11,7 @@ import { Shutdown } from './Shutdown';
  * @see [[Shutdown]]
  */
 export class DefaultTestFactory extends Factory {
-	public static readonly Descriptor = new Descriptor("pip-services", "factory", "test", "default", "1.0");
-	public static readonly ShutdownDescriptor = new Descriptor("pip-services", "shutdown", "*", "*", "1.0");
+	private static readonly ShutdownDescriptor = new Descriptor("pip-services", "shutdown", "*", "*", "1.0");
 
 	/**
 	 * Create a new instance of the factory.

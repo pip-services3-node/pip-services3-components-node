@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompositeCounters = void 0;
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
-const Timing_1 = require("./Timing");
+const CounterTiming_1 = require("./CounterTiming");
 /**
  * Aggregates all counters from component references under a single component.
  *
@@ -37,15 +37,13 @@ const Timing_1 = require("./Timing");
  *
  */
 class CompositeCounters {
-    constructor() {
-        this._counters = [];
-    }
     /**
      * Creates a new instance of the counters.
      *
      * @param references 	references to locate the component dependencies.
      */
-    CompositeCounters(references = null) {
+    constructor(references = null) {
+        this._counters = [];
         if (references != null)
             this.setReferences(references);
     }
@@ -55,7 +53,7 @@ class CompositeCounters {
      * @param references 	references to locate the component dependencies.
      */
     setReferences(references) {
-        var counters = references.getOptional(new pip_services3_commons_node_1.Descriptor(null, "counters", null, null, null));
+        let counters = references.getOptional(new pip_services3_commons_node_1.Descriptor(null, "counters", null, null, null));
         for (let i = 0; i < counters.length; i++) {
             let counter = counters[i];
             if (counter != this)
@@ -64,14 +62,14 @@ class CompositeCounters {
     }
     /**
      * Begins measurement of execution time interval.
-     * It returns [[Timing]] object which has to be called at
-     * [[Timing.endTiming]] to end the measurement and update the counter.
+     * It returns [[CounterTiming]] object which has to be called at
+     * [[CounterTiming.endTiming]] to end the measurement and update the counter.
      *
      * @param name 	a counter name of Interval type.
-     * @returns a [[Timing]] callback object to end timing.
+     * @returns a [[CounterTiming]] callback object to end timing.
      */
     beginTiming(name) {
-        return new Timing_1.Timing(name, this);
+        return new CounterTiming_1.CounterTiming(name, this);
     }
     /**
      * Ends measurement of execution elapsed time and updates specified counter.
@@ -79,12 +77,12 @@ class CompositeCounters {
      * @param name      a counter name
      * @param elapsed   execution elapsed time in milliseconds to update the counter.
      *
-     * @see [[Timing.endTiming]]
+     * @see [[CounterTiming.endTiming]]
      */
     endTiming(name, elapsed) {
         for (let i = 0; i < this._counters.length; i++) {
             let counter = this._counters[i];
-            var callback = counter;
+            let callback = counter;
             if (callback != null)
                 callback.endTiming(name, elapsed);
         }

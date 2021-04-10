@@ -1,4 +1,4 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 let async = require('async');
 
 import { ICache } from '../../src/cache/ICache';

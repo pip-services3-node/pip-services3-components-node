@@ -1,5 +1,3 @@
-/** @module count */
-import { Descriptor } from 'pip-services3-commons-node';
 import { Factory } from '../build/Factory';
 /**
  * Creates [[ICounters]] components by their descriptors.
@@ -10,10 +8,9 @@ import { Factory } from '../build/Factory';
  * @see [[CompositeCounters]]
  */
 export declare class DefaultCountersFactory extends Factory {
-    static readonly Descriptor: Descriptor;
-    static readonly NullCountersDescriptor: Descriptor;
-    static readonly LogCountersDescriptor: Descriptor;
-    static readonly CompositeCountersDescriptor: Descriptor;
+    private static readonly NullCountersDescriptor;
+    private static readonly LogCountersDescriptor;
+    private static readonly CompositeCountersDescriptor;
     /**
      * Create a new instance of the factory.
      */

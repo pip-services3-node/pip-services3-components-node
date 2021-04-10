@@ -25,7 +25,6 @@ class DefaultCacheFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultCacheFactory = DefaultCacheFactory;
-DefaultCacheFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "cache", "default", "1.0");
 DefaultCacheFactory.NullCacheDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "cache", "null", "*", "1.0");
 DefaultCacheFactory.MemoryCacheDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "cache", "memory", "*", "1.0");
 //# sourceMappingURL=DefaultCacheFactory.js.map

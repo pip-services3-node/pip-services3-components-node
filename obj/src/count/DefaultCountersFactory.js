@@ -27,7 +27,6 @@ class DefaultCountersFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultCountersFactory = DefaultCountersFactory;
-DefaultCountersFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "counters", "default", "1.0");
 DefaultCountersFactory.NullCountersDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "counters", "null", "*", "1.0");
 DefaultCountersFactory.LogCountersDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "counters", "log", "*", "1.0");
 DefaultCountersFactory.CompositeCountersDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "counters", "composite", "*", "1.0");

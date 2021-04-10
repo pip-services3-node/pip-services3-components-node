@@ -1,4 +1,4 @@
-let assert = require('chai').assert;
+const assert = require('chai').assert;
 
 import { NullLogger } from '../../src/log/NullLogger';
 import { LogLevel } from '../../src/log/LogLevel';

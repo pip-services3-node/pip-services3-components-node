@@ -1,5 +1,3 @@
-/** @module test */
-import { Descriptor } from 'pip-services3-commons-node';
 import { Factory } from '../build/Factory';
 /**
  * Creates test components by their descriptors.
@@ -8,8 +6,7 @@ import { Factory } from '../build/Factory';
  * @see [[Shutdown]]
  */
 export declare class DefaultTestFactory extends Factory {
-    static readonly Descriptor: Descriptor;
-    static readonly ShutdownDescriptor: Descriptor;
+    private static readonly ShutdownDescriptor;
     /**
      * Create a new instance of the factory.
      */

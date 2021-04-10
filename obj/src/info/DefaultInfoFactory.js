@@ -22,7 +22,6 @@ class DefaultInfoFactory extends Factory_1.Factory {
     }
 }
 exports.DefaultInfoFactory = DefaultInfoFactory;
-DefaultInfoFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "factory", "info", "default", "1.0");
 DefaultInfoFactory.ContextInfoDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "context-info", "default", "*", "1.0");
 DefaultInfoFactory.ContainerInfoDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services", "container-info", "default", "*", "1.0");
 //# sourceMappingURL=DefaultInfoFactory.js.map

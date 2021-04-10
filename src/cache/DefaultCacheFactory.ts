@@ -14,9 +14,8 @@ import { MemoryCache } from './MemoryCache';
  * @see [[NullCache]]
  */
 export class DefaultCacheFactory extends Factory {
-    public static readonly Descriptor: Descriptor = new Descriptor("pip-services", "factory", "cache", "default", "1.0");
-    public static readonly NullCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "null", "*", "1.0");
-    public static readonly MemoryCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "memory", "*", "1.0");
+    private static readonly NullCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "null", "*", "1.0");
+    private static readonly MemoryCacheDescriptor: Descriptor = new Descriptor("pip-services", "cache", "memory", "*", "1.0");
 
 	/**
 	 * Create a new instance of the factory.

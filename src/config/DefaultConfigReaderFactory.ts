@@ -15,10 +15,9 @@ import { YamlConfigReader } from './YamlConfigReader';
  * @see [[YamlConfigReader]]
  */
 export class DefaultConfigReaderFactory extends Factory {
-	public static readonly Descriptor = new Descriptor("pip-services", "factory", "config-reader", "default", "1.0");
-	public static readonly MemoryConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "memory", "*", "1.0");
-	public static readonly JsonConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "json", "*", "1.0");
-	public static readonly YamlConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "yaml", "*", "1.0");
+	private static readonly MemoryConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "memory", "*", "1.0");
+	private static readonly JsonConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "json", "*", "1.0");
+	private static readonly YamlConfigReaderDescriptor = new Descriptor("pip-services", "config-reader", "yaml", "*", "1.0");
 	
 	/**
 	 * Create a new instance of the factory.
