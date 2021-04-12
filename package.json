@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-components-node",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Component definitions for Pip.Services in Node.js",
     "contributors": [
@@ -42,7 +42,8 @@
         "retest": "tsc && mocha -t 10000 -R spec -u tdd --recursive ./obj/test"
     },
     "dependencies": {
-        "pip-services3-commons-node": "^3.0.8"
+        "pip-services3-commons-node": "^3.0.8",
+        "handlebars": "^4.7.6"
     },
     "devDependencies": {
         "@types/async": "^2.0.0",
@@ -51,7 +52,6 @@
         "@types/mocha": "*",
         "@types/node": "*",
         "chai": "^3.5.0",
-        "handlebars": "^4.7.6",
         "js-yaml": "^3.14.0",
         "mocha": "^2.2.0"
     }
