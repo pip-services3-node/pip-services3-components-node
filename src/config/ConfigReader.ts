@@ -5,7 +5,8 @@ let _ = require('lodash');
 let handlebars = require('handlebars');
 
 import { ConfigParams } from 'pip-services3-commons-node';
-import { IConfigurable } from 'pip-services3-commons-node'
+import { IConfigurable } from 'pip-services3-commons-node';
+import { INotifiable } from 'pip-services3-commons-node';
 
 /**
  * Abstract config reader that supports configuration parameterization.
@@ -70,4 +71,20 @@ export abstract class ConfigReader implements IConfigurable {
         return template(parameters);
     }
 
+    /**
+     * Adds a listener that will be notified when configuration is changed
+     * @param listener a listener to be added.
+     */
+    public addChangeListener(listener: INotifiable): void {
+        // Do nothing...
+    }
+
+     /**
+      * Remove a previously added change listener.
+      * @param listener a listener to be removed.
+      */
+    public removeChangeListener(listener: INotifiable): void {
+        // Do nothing...
+    }
+ 
 }

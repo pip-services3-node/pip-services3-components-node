@@ -5,6 +5,7 @@ let handlebars = require('handlebars');
 
 import { ConfigParams } from 'pip-services3-commons-node';
 import { IReconfigurable } from 'pip-services3-commons-node';
+import { INotifiable } from 'pip-services3-commons-node';
 
 import { IConfigReader } from './IConfigReader';
 
@@ -76,6 +77,22 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
             let config = new ConfigParams(this._config);;
             callback(null, config);
         }
+    }
+
+    /**
+     * Adds a listener that will be notified when configuration is changed
+     * @param listener a listener to be added.
+     */
+    public addChangeListener(listener: INotifiable): void {
+        // Do nothing...
+    }
+
+    /**
+     * Remove a previously added change listener.
+     * @param listener a listener to be removed.
+     */
+    public removeChangeListener(listener: INotifiable): void {
+        // Do nothing...
     }
 
 }

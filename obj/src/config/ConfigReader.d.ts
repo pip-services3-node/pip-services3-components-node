@@ -1,5 +1,6 @@
 import { ConfigParams } from 'pip-services3-commons-node';
 import { IConfigurable } from 'pip-services3-commons-node';
+import { INotifiable } from 'pip-services3-commons-node';
 /**
  * Abstract config reader that supports configuration parameterization.
  *
@@ -40,4 +41,14 @@ export declare abstract class ConfigReader implements IConfigurable {
      * @returns a parameterized configuration string.
      */
     protected parameterize(config: string, parameters: ConfigParams): string;
+    /**
+     * Adds a listener that will be notified when configuration is changed
+     * @param listener a listener to be added.
+     */
+    addChangeListener(listener: INotifiable): void;
+    /**
+     * Remove a previously added change listener.
+     * @param listener a listener to be removed.
+     */
+    removeChangeListener(listener: INotifiable): void;
 }
