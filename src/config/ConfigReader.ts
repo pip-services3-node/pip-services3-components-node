@@ -1,12 +1,11 @@
 /** @module config */
 /** @hidden */ 
 let _ = require('lodash');
-/** @hidden */ 
-let handlebars = require('handlebars');
 
 import { ConfigParams } from 'pip-services3-commons-node';
 import { IConfigurable } from 'pip-services3-commons-node';
 import { INotifiable } from 'pip-services3-commons-node';
+import { MustacheTemplate } from 'pip-services3-expressions-nodex';
 
 /**
  * Abstract config reader that supports configuration parameterization.
@@ -59,16 +58,8 @@ export abstract class ConfigReader implements IConfigurable {
     protected parameterize(config: string, parameters: ConfigParams): string {
         parameters = this._parameters.override(parameters);
 
-        // Convert template to lodash
-        //config = config.replace(/{{/g, "<%=").replace(/}}/g, "%>");
-
-        //let template = _.template(config);
-        //return template(parameters);
-
-        // return mustache.render(config, parameters);
-        
-        let template = handlebars.compile(config);
-        return template(parameters);
+        let template = new MustacheTemplate(config);
+        return template.evaluateWithVariables(parameters);
     }
 
     /**

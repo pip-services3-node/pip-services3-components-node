@@ -1,5 +1,6 @@
+import { MustacheTemplate } from "pip-services3-expressions-nodex";
+
 const assert = require('chai').assert;
-let handlebars = require('handlebars');
 
 suite('ConfigReader', ()=> {
 
@@ -7,10 +8,10 @@ suite('ConfigReader', ()=> {
         let config = "{{#if A}}{{B}}{{/if}}"
         let params = { A: "true", B: "XYZ" };
 
-        let template = handlebars.compile(config);
-        let result = template(params);
+        let template = new MustacheTemplate(config);
+        let result = template.evaluateWithVariables(params);
 
-		assert.equal(result, "XYZ");
+        assert.equal(result, "XYZ");
     });
 
 

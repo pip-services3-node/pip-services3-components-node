@@ -4,8 +4,8 @@ exports.MemoryConfigReader = void 0;
 /** @module config */
 /** @hidden */
 let _ = require('lodash');
-let handlebars = require('handlebars');
 const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_expressions_nodex_1 = require("pip-services3-expressions-nodex");
 /**
  * Config reader that stores configuration in memory.
  *
@@ -63,8 +63,8 @@ class MemoryConfigReader {
     readConfig(correlationId, parameters, callback) {
         if (parameters != null) {
             let config = new pip_services3_commons_node_1.ConfigParams(this._config).toString();
-            let template = handlebars.compile(config);
-            config = template(parameters);
+            let template = new pip_services3_expressions_nodex_1.MustacheTemplate(config);
+            config = template.evaluateWithVariables(parameters);
             callback(null, pip_services3_commons_node_1.ConfigParams.fromString(config));
         }
         else {

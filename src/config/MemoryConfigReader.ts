@@ -1,11 +1,11 @@
 /** @module config */
 /** @hidden */ 
 let _ = require('lodash');
-let handlebars = require('handlebars');
 
 import { ConfigParams } from 'pip-services3-commons-node';
 import { IReconfigurable } from 'pip-services3-commons-node';
 import { INotifiable } from 'pip-services3-commons-node';
+import { MustacheTemplate } from 'pip-services3-expressions-nodex';
 
 import { IConfigReader } from './IConfigReader';
 
@@ -70,8 +70,8 @@ export class MemoryConfigReader implements IConfigReader, IReconfigurable {
         callback: (err: any, config: ConfigParams) => void): void {
         if (parameters != null) {
             let config = new ConfigParams(this._config).toString();
-            let template = handlebars.compile(config);
-            config = template(parameters);
+            let template = new MustacheTemplate(config);
+            config = template.evaluateWithVariables(parameters);
             callback(null, ConfigParams.fromString(config));
         } else {
             let config = new ConfigParams(this._config);;

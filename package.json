@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-components-node",
-    "version": "3.3.0",
+    "version": "3.3.1",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Component definitions for Pip.Services in Node.js",
     "contributors": [
@@ -43,7 +43,7 @@
     },
     "dependencies": {
         "pip-services3-commons-node": "^3.0.8",
-        "handlebars": "^4.7.6",
+        "pip-services3-expressions-nodex": "^1.0.2",
         "js-yaml": "^3.14.0"
     },
     "devDependencies": {
