@@ -1,6 +1,6 @@
 {
     "name":  "pip-services3-components-node",
-    "type": "microservice",
+    "type": "module",
     "language": "node",
     "version": "3.3.1",
     "build": 0,
